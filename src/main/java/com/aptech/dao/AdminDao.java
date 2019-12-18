@@ -29,6 +29,7 @@ public class AdminDao {
 
     //create admin user
     public static int saveAdmin(String firstname, String lastname, String password, String email,String contact){
+
         return 0;
     }
 }

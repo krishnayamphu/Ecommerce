@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 
 public class AdminLoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("email");
+        String email = request.getParameter("email");//admin@gmail.com
         String password = request.getParameter("password");
         int status = AdminDao.login(email, password);
         PrintWriter pw = response.getWriter();
@@ -21,7 +21,9 @@ public class AdminLoginController extends HttpServlet {
             session.setAttribute("email", email);
             response.sendRedirect("dashboard");
         } else {
-            pw.print(status);
+            String msg="Invalid username or password";
+            request.setAttribute("err",msg);
+            request.getRequestDispatcher("auth/login.jsp").forward(request,response);
         }
     }
 
