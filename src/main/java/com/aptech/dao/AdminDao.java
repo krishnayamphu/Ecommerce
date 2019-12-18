@@ -29,7 +29,20 @@ public class AdminDao {
 
     //create admin user
     public static int saveAdmin(String firstname, String lastname, String password, String email,String contact){
-
-        return 0;
+        int status=0;
+        Connection cn=ConnectDB.connect();
+        String sql="INSERT INTO admin (firstname,lastname,password,email,contact) VALUES(?,?,?,?,?)";
+        try {
+            PreparedStatement ps=cn.prepareStatement(sql);
+            ps.setString(1,firstname);
+            ps.setString(2,lastname);
+            ps.setString(3,password);
+            ps.setString(4,email);
+            ps.setString(5,contact);
+            status=ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
     }
 }

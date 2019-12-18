@@ -1,10 +1,13 @@
 package com.aptech.controllers.admin;
 
+import com.aptech.dao.AdminDao;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class RegisterAdminController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,6 +20,11 @@ public class RegisterAdminController extends HttpServlet {
 
         if(password.equals(cpassword)){
 
+            int status=AdminDao.saveAdmin(firstname,lastname,password,email,contact);
+            PrintWriter pw=response.getWriter();
+            pw.print(status);
+//            pw.print(firstname+" "+ lastname+"
+//           "+email+" "+contact+" "+password+" "+cpassword);
         }
     }
 
