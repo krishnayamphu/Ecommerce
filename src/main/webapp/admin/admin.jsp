@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -283,6 +284,27 @@
                                     </form>
                                 </td>
                             </tr>
+
+                            <c:forEach items="${alladmins}" var="user">
+                                <tr>
+                                    <td>${user.id}</td>
+                                    <td><c:out value="${user.firstname}" /></td>
+                                    <td><c:out value="${user.lastname}" /></td>
+                                    <td><c:out value="${user.createdAt}" /></td>
+                                    <td>
+                                        <div style="display: flex; padding: 5px 10px">
+                                            <a href="useredit?id=${user.id}" style="padding-right: 10px">
+                                                <button>Edit</button></a>
+
+                                            <form action="dashboard" method="post">
+                                                <input type="hidden" value="${user.id}" name="id">
+                                                <button type="submit">Delete</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+
                             </tbody>
                         </table>
                     </div>

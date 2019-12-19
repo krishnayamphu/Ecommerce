@@ -1,11 +1,13 @@
 package com.aptech.dao;
 
 import com.aptech.dbhelper.ConnectDB;
+import com.aptech.models.Admin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AdminDao {
     //admin login
@@ -45,4 +47,35 @@ public class AdminDao {
         }
         return status;
     }
+
+    //get all admin users
+    public static ArrayList<Admin> getAllAdmins(){
+        ArrayList<Admin> all_admins=new ArrayList<>();
+        Connection cn=ConnectDB.connect();
+        String sql="SELECT * FROM admin";
+        try {
+            PreparedStatement ps=cn.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                int id=Integer.parseInt(rs.getString("id"));
+                String fname=rs.getString("firstname");
+                String lname=rs.getString("lastname");
+                String email=rs.getString("email");
+                String date=rs.getString("created_at");
+
+                Admin admin=new Admin();
+                admin.setId(id);
+                admin.setFirstname(fname);
+                admin.setLastname(lname);
+                admin.setEmail(email);
+                admin.setCreatedAt(date);
+
+                all_admins.add(admin);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return all_admins;
+    }
+
 }
