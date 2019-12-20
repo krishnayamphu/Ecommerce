@@ -271,20 +271,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1.</td>
-                                <td>Ram Thapa</td>
-                                <td>ram@gmail.com</td>
-                                <td><span class="badge bg-danger">2019-2-1 12:22:12</span></td>
-                                <td>
-                                    <a class="btn btn-success" href="#">Edit</a>
-                                    <form action="#">
-                                        <input type="hidden" name="id" value="1">
-                                        <button class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-
                             <c:forEach items="${alladmins}" var="user">
                                 <tr>
                                     <td>${user.id}</td>
@@ -292,19 +278,16 @@
                                     <td><c:out value="${user.lastname}" /></td>
                                     <td><c:out value="${user.createdAt}" /></td>
                                     <td>
-                                        <div style="display: flex; padding: 5px 10px">
-                                            <a href="useredit?id=${user.id}" style="padding-right: 10px">
-                                                <button>Edit</button></a>
-
+                                        <div class="d-flex p-2">
+                                            <a class="btn btn-sm btn-success mr-3" href="edit?id=${user.id}">Edit</a>
                                             <form action="dashboard" method="post">
                                                 <input type="hidden" value="${user.id}" name="id">
-                                                <button type="submit">Delete</button>
+                                                <button class="btn btn-sm btn-danger" type="submit">Delete</button>
                                             </form>
                                         </div>
                                     </td>
                                 </tr>
                             </c:forEach>
-
                             </tbody>
                         </table>
                     </div>
@@ -334,24 +317,24 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
+<script src="http://localhost:8080/ecommerce/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="http://localhost:8080/ecommerce/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="http://localhost:8080/ecommerce/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="../plugins/chart.js/Chart.min.js"></script>
+<script src="http://localhost:8080/ecommerce/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="../plugins/sparklines/sparkline.js"></script>
+<script src="http://localhost:8080/ecommerce/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
-<script src="../plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<script src="http://localhost:8080/ecommerce/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="http://localhost:8080/ecommerce/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
-<script src="../plugins/jquery-knob/jquery.knob.min.js"></script>
+<script src="http://localhost:8080/ecommerce/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
 <script src="http://localhost:8080/ecommerce/plugins/moment/moment.min.js"></script>
 <script src="http://localhost:8080/ecommerce/plugins/daterangepicker/daterangepicker.js"></script>

@@ -78,4 +78,37 @@ public class AdminDao {
         return all_admins;
     }
 
+    //get single admin user
+    public static ArrayList<Admin> getSingleAdminUser(int id){
+        ArrayList<Admin> single_admin=new ArrayList<>();
+        Connection cn=ConnectDB.connect();
+        String sql="SELECT * FROM admin WHERE id=?";
+        try {
+            PreparedStatement ps=cn.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                int admin_id=Integer.parseInt(rs.getString("id"));
+                String fname=rs.getString("firstname");
+                String lname=rs.getString("lastname");
+                String password=rs.getString("password");
+                String email=rs.getString("email");
+                String contact=rs.getString("contact");
+
+                Admin admin=new Admin();
+                admin.setId(admin_id);
+                admin.setFirstname(fname);
+                admin.setLastname(lname);
+                admin.setPassword(password);
+                admin.setEmail(email);
+                admin.setCreatedAt(contact);
+
+                single_admin.add(admin);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return single_admin;
+    }
+
 }
