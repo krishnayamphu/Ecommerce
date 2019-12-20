@@ -274,12 +274,13 @@
                             <c:forEach items="${alladmins}" var="user">
                                 <tr>
                                     <td>${user.id}</td>
-                                    <td><c:out value="${user.firstname}" /></td>
-                                    <td><c:out value="${user.lastname}" /></td>
+                                    <td>${user.firstname} ${user.lastname}</td>
+                                    <td><c:out value="${user.email}"/></td>
                                     <td><c:out value="${user.createdAt}" /></td>
                                     <td>
                                         <div class="d-flex p-2">
-                                            <a class="btn btn-sm btn-success mr-3" href="edit?id=${user.id}">Edit</a>
+                                            <a class="btn btn-sm btn-success mr-3"
+                                               href="admin/edit?id=${user.id}">Edit</a>
                                             <form action="dashboard" method="post">
                                                 <input type="hidden" value="${user.id}" name="id">
                                                 <button class="btn btn-sm btn-danger" type="submit">Delete</button>
