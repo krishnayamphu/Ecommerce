@@ -28,10 +28,15 @@ public class TestJDBC {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
+        Admin admin = new Admin();
+        admin.setFirstname("krish");
+        admin.setLastname("Yam");
+        admin.setEmail("k@gmail.com");
+        admin.setContact("5454");
+        admin.setPassword("45");
+        admin.setUpdatedAt("2019-12-18 17:28:13");
+        admin.setId(1);
 
-        ArrayList<Admin> adminusers= AdminDao.getAllAdmins();
-        for (Admin a:adminusers) {
-            System.out.println(a.getEmail());
-        }
+        System.out.println(AdminDao.updateAdmin(admin));
     }
 }

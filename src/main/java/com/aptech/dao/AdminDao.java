@@ -101,7 +101,7 @@ public class AdminDao {
                 admin.setLastname(lname);
                 admin.setPassword(password);
                 admin.setEmail(email);
-                admin.setCreatedAt(contact);
+                admin.setContact(contact);
 
                 single_admin.add(admin);
             }
@@ -109,6 +109,30 @@ public class AdminDao {
             e.printStackTrace();
         }
         return single_admin;
+    }
+
+    //update admin user
+    public static boolean updateAdmin(Admin admin) {
+        boolean bool = false;
+        Connection cn = ConnectDB.connect();
+        String sql = "UPDATE admin SET firstname=?,lastname=?,email=?,contact=?,password=?,updated_at=? WHERE id=?";
+        try {
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, admin.getFirstname());
+            ps.setString(2, admin.getLastname());
+            ps.setString(3, admin.getEmail());
+            ps.setString(4, admin.getContact());
+            ps.setString(5, admin.getPassword());
+            ps.setString(6, admin.getUpdatedAt());
+            ps.setInt(7, admin.getId());
+            int status = ps.executeUpdate();
+            if (status == 1) {
+                bool = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bool;
     }
 
 }
