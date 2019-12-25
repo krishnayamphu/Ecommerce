@@ -34,8 +34,9 @@ public class AdminEditController extends HttpServlet {
             admin.setUpdatedAt(timeStamp);
             admin.setId(id);
             boolean status = AdminDao.updateAdmin(admin);
-            PrintWriter pw = response.getWriter();
-            pw.print(status);
+            response.sendRedirect("edit?id=" + id);
+//            PrintWriter pw = response.getWriter();
+//            pw.print(status);
         }
     }
 

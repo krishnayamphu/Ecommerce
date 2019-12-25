@@ -246,7 +246,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Admin User Details</h1>
+                        <h3 class="m-0 text-dark">Admin User Details</h3>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -268,8 +268,6 @@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-body register-card-body">
-                                <p class="login-box-msg">Admin User Details</p>
-
                                 <form action="edit" method="post">
                                     <c:forEach items="${adminuser}" var="admin">
                                         <input type="hidden" name="id" value="${admin.id}">

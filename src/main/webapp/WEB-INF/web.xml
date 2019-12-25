@@ -26,6 +26,10 @@
         <servlet-name>AdminEditController</servlet-name>
         <servlet-class>com.aptech.controllers.admin.AdminEditController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CutomerManageController</servlet-name>
+        <servlet-class>com.aptech.controllers.admin.CutomerManageController</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>DashboardController</servlet-name>
@@ -48,5 +52,9 @@
     <servlet-mapping>
         <servlet-name>AdminController</servlet-name>
         <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CutomerManageController</servlet-name>
+        <url-pattern>/admin/customer</url-pattern>
     </servlet-mapping>
 </web-app>
