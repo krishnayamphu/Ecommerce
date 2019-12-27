@@ -13,7 +13,13 @@ import java.util.ArrayList;
 
 public class AdminController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        int id = Integer.parseInt(request.getParameter("id"));
+        if (AdminDao.deleteAdmin(id)) {
+            //success message
+        } else {
+            //error message
+        }
+        response.sendRedirect("/ecommerce/admin");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

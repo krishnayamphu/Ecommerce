@@ -7,23 +7,12 @@ public class Admin {
     private String password;
     private String email;
     private String contact;
+    private String image;
     private String createdAt;
     private String updatedAt;
 
     public Admin() {
     }
-
-    public Admin(int id, String firstname, String lastname, String password, String email, String contact, String createdAt, String updatedAt) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-        this.email = email;
-        this.contact = contact;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
 
     public int getId() {
         return id;
@@ -71,6 +60,14 @@ public class Admin {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getCreatedAt() {

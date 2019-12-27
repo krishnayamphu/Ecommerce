@@ -12,7 +12,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="http://localhost:8080/ecommerce/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet"
+          href="http://localhost:8080/ecommerce/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="http://localhost:8080/ecommerce/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -20,7 +21,8 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="http://localhost:8080/ecommerce/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="http://localhost:8080/ecommerce/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet"
+          href="http://localhost:8080/ecommerce/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="http://localhost:8080/ecommerce/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
@@ -70,7 +72,8 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <img src="../dist/img/user1-128x128.jpg" alt="User Avatar"
+                                 class="img-size-50 mr-3 img-circle">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Brad Diesel
@@ -86,7 +89,8 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="../dist/img/user8-128x128.jpg" alt="User Avatar"
+                                 class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     John Pierce
@@ -102,7 +106,8 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="../dist/img/user3-128x128.jpg" alt="User Avatar"
+                                 class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Nora Silvester
@@ -155,7 +160,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <%@include file="sidebar.jsp" %>
+    <%@include file="../sidebar.jsp" %>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -164,7 +169,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Manage Admin Users</h1>
+                        <h3 class="m-0 text-dark">Admin User Details</h3>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -183,38 +188,83 @@
 
                 <!-- start admin user -->
                 <div class="row">
-                    <div class="col">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Fullname</th>
-                                <th>Email</th>
-                                <th>Created Date</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${alladmins}" var="user">
-                                <tr>
-                                    <td>${user.id}</td>
-                                    <td>${user.firstname} ${user.lastname}</td>
-                                    <td><c:out value="${user.email}"/></td>
-                                    <td><c:out value="${user.createdAt}" /></td>
-                                    <td>
-                                        <div class="d-flex p-2">
-                                            <a class="btn btn-sm btn-success mr-3"
-                                               href="admin/edit?id=${user.id}">Edit</a>
-                                            <form action="admin" method="post">
-                                                <input type="hidden" value="${user.id}" name="id">
-                                                <button class="btn btn-sm btn-danger" type="submit">Delete</button>
-                                            </form>
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-body register-card-body">
+                                <form action="edit" method="post">
+                                    <c:forEach items="${adminuser}" var="admin">
+                                        <input type="hidden" name="id" value="${admin.id}">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="firstname"
+                                                   value="${admin.firstname}" placeholder="First Name">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span class="fas fa-user"></span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
+
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="lastname"
+                                                   value="${admin.lastname}" placeholder="Last Name">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span class="fas fa-user"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <input type="email" class="form-control" name="email" value="${admin.email}"
+                                                   placeholder="Email">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span class="fas fa-envelope"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="contact"
+                                                   value="${admin.contact}" placeholder="Contact">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span class="fas fa-mobile-alt"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <input type="password" class="form-control" name="password"
+                                                   value="${admin.password}" placeholder="Password">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span class="fas fa-lock"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <input type="password" class="form-control" name="cpassword"
+                                                   placeholder="Retype password">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span class="fas fa-lock"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <button type="submit" class="btn btn-primary btn-block">Update</button>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                    </c:forEach>
+                                </form>
+                            </div>
+                            <!-- /.form-box -->
+                        </div><!-- /.card -->
                     </div>
                 </div>
                 <!-- end admin user -->

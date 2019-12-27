@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Register</title>
+    <title>AdminLTE 3 | Manage Customer Users</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -62,7 +62,7 @@
                 <div class="register-box">
                     <div class="card">
                         <div class="card-body register-card-body">
-                            <form action="register" method="post" enctype="multipart/form-data">
+                            <form action="register" method="post">
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" name="firstname" placeholder="First Name"
                                            required>
@@ -120,10 +120,6 @@
                                             <span class="fas fa-lock"></span>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="input-group mb-3 p-1">
-                                    <input type="file" class="form-control" name="file">
                                 </div>
 
                                 <div class="row">

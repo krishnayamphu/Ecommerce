@@ -45,19 +45,15 @@ public class CustomerDao {
     }
 
     //update admin user
-    public static boolean updateAdmin(Admin admin) {
+    public static boolean updateActiveStatus(Customer customer) {
         boolean bool = false;
         Connection cn = ConnectDB.connect();
-        String sql = "UPDATE admin SET firstname=?,lastname=?,email=?,contact=?,password=?,updated_at=? WHERE id=?";
+        String sql = "UPDATE customer SET active=?,updated_at=? WHERE customer_id=?";
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setString(1, admin.getFirstname());
-            ps.setString(2, admin.getLastname());
-            ps.setString(3, admin.getEmail());
-            ps.setString(4, admin.getContact());
-            ps.setString(5, admin.getPassword());
-            ps.setString(6, admin.getUpdatedAt());
-            ps.setInt(7, admin.getId());
+            ps.setInt(1, customer.getActive());
+            ps.setString(2, customer.getUpdatedAt());
+            ps.setInt(3, customer.getCid());
             int status = ps.executeUpdate();
             if (status == 1) {
                 bool = true;
@@ -67,5 +63,4 @@ public class CustomerDao {
         }
         return bool;
     }
-
 }

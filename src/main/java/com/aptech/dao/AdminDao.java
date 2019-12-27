@@ -135,4 +135,24 @@ public class AdminDao {
         return bool;
     }
 
+    //delete admin user
+    public static boolean deleteAdmin(int id) {
+        boolean bool = false;
+        Connection cn = ConnectDB.connect();
+        String sql = "DELETE FROM admin WHERE id=?";
+        try {
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setInt(1, id);
+            int status = ps.executeUpdate();
+            if (status == 1) {
+                bool = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bool;
+    }
+
+
+
 }

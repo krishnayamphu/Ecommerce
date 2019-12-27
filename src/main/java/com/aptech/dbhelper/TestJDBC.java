@@ -1,25 +1,21 @@
 package com.aptech.dbhelper;
 
-
-import com.aptech.dao.AdminDao;
-import com.aptech.dao.CustomerDao;
-import com.aptech.models.Admin;
-import com.aptech.models.Customer;
-
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import javax.xml.bind.DatatypeConverter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class TestJDBC {
     public static void main(String[] args) {
-        ArrayList<Customer> users = CustomerDao.getAllCusotmers();
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest("12345".getBytes(StandardCharsets.UTF_8));
 
-        for (Customer c : users) {
-            System.out.println(c.getCid() + " " + c.getFirstname());
+            String hex = DatatypeConverter.printHexBinary(hash);
+            System.out.println(hex);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
-
     }
 }
