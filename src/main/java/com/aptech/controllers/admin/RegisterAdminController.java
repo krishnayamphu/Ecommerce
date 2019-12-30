@@ -1,7 +1,12 @@
 package com.aptech.controllers.admin;
 
 import com.aptech.dao.AdminDao;
-import com.oreilly.servlet.MultipartRequest;
+import com.aptech.models.Admin;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,72 +15,131 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.nio.file.Paths;
-import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RegisterAdminController extends HttpServlet {
-    private static String getSubmittedFileName(Part part) {
-        for (String cd : part.getHeader("content-disposition").split(";")) {
-            if (cd.trim().startsWith("filename")) {
-                String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-                return fileName.substring(fileName.lastIndexOf('/') + 1).substring(fileName.lastIndexOf('\\') + 1); // MSIE fix.
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter pw = response.getWriter();
+        String firstname = null;
+        String lastname = null;
+        String email = null;
+        String contact = null;
+        String password = null;
+        String cpassword = null;
+        String imageName = null;
+
+        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+        if (isMultipart) {
+            FileItemFactory factory = new DiskFileItemFactory();
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            try {
+                List items = upload.parseRequest(request);
+                Iterator iterator = items.iterator();
+                while (iterator.hasNext()) {
+                    FileItem item = (FileItem) iterator.next();
+                    if (!item.isFormField()) {
+                        String fileName = item.getName();
+                        String root = getServletContext().getRealPath("/");
+//                        File path = new File(root + "/uploads");
+                        File path = new File("C:\\Users\\Krishna Yamphu\\Desktop\\Ecommerce\\src\\main\\webapp\\uploads\\admin");
+                        if (!path.exists()) {
+                            boolean status = path.mkdirs();
+                        }
+                        File uploadedFile = new File(path + "/" + fileName);
+                        item.write(uploadedFile);
+                        imageName = fileName;
+                        System.out.println(uploadedFile.getAbsolutePath());
+                        System.out.println(fileName);
+                    } else {
+                        String fieldname = item.getFieldName();
+                        String filedvalue = item.getString();
+                        if (fieldname.equals("firstname")) {
+                            firstname = filedvalue;
+                        }
+                        if (fieldname.equals("lastname")) {
+                            lastname = filedvalue;
+                        }
+                        if (fieldname.equals("email")) {
+                            email = filedvalue;
+                        }
+                        if (fieldname.equals("contact")) {
+                            contact = filedvalue;
+                        }
+                        if (fieldname.equals("password")) {
+                            password = filedvalue;
+                        }
+                        if (fieldname.equals("cpassword")) {
+                            cpassword = filedvalue;
+                        }
+                    }
+                }
+
+                pw.print(firstname + ", " + lastname + ", " + email + ", " + contact + ", " + password + "," + imageName);
+
+            } catch (FileUploadException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
-        return null;
     }
+
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String imageName = null;
+//
+////        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+////        if (isMultipart) {
+////            FileItemFactory factory = new DiskFileItemFactory();
+////            ServletFileUpload upload = new ServletFileUpload(factory);
+////            try {
+////                List items = upload.parseRequest(request);
+////                Iterator iterator = items.iterator();
+////                while (iterator.hasNext()) {
+////                    FileItem item = (FileItem) iterator.next();
+////                    if (!item.isFormField()) {
+////                        String fileName = item.getName();
+////                        String root = getServletContext().getRealPath("/");
+//////                        File path = new File(root + "/uploads");
+////                        File path = new File("C:\\Users\\Krishna Yamphu\\Desktop\\Ecommerce\\src\\main\\webapp\\uploads\\admin");
+////                        if (!path.exists()) {
+////                            boolean status = path.mkdirs();
+////                        }
+////                        File uploadedFile = new File(path + "/" + fileName);
+////                        imageName = fileName;
+////                        item.write(uploadedFile);
+////                        System.out.println(uploadedFile.getAbsolutePath());
+////                        System.out.println(fileName);
+////                    }
+////                }
+////            } catch (FileUploadException e) {
+////                e.printStackTrace();
+////            } catch (Exception e) {
+////                e.printStackTrace();
+////            }
+////        }
+//
+
+//
+////        Admin admin = new Admin();
+////        admin.setFirstname(firstname);
+////        admin.setLastname(lastname);
+////        admin.setEmail(email);
+////        admin.setContact(contact);
+////        admin.setImage(imageName);
+////        admin.setPassword(password);
+//        PrintWriter pw = response.getWriter();
+////
+//        pw.print(firstname);
+////                            int status=AdminDao.saveAdmin(admin);
+//        //            response.sendRedirect("/ecommerce/admin");
+//    }
+//
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("auth/register.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String firstname=request.getParameter("firstname");
-        String lastname=request.getParameter("lastname");
-        String email=request.getParameter("email");
-        String contact=request.getParameter("contact");
-        String password=request.getParameter("password");
-        String cpassword=request.getParameter("cpassword");
-
-        if(password.equals(cpassword)){
-            boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-            if (isMultipart) {
-                FileItemFactory factory = new DiskFileItemFactory();
-                ServletFileUpload upload = new ServletFileUpload(factory);
-
-                try {
-                    List items = upload.parseRequest(request);
-                    Iterator iterator = items.iterator();
-                    while (iterator.hasNext()) {
-                        FileItem item = (FileItem) iterator.next();
-
-                        if (!item.isFormField()) {
-                            String fileName = item.getName();
-
-                            String root = getServletContext().getRealPath("/");
-//                        File path = new File(root + "/uploads");
-                            File path = new File("E:\\Server\\j2ee\\fileuploaddemo\\uploads");
-                            if (!path.exists()) {
-                                boolean status = path.mkdirs();
-                            }
-
-                            File uploadedFile = new File(path + "/" + fileName);
-                            System.out.println(uploadedFile.getAbsolutePath());
-                            item.write(uploadedFile);
-                        }
-                    }
-                } catch (FileUploadException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            int status=AdminDao.saveAdmin(firstname,lastname,password,email,contact);
-            response.sendRedirect("/ecommerce/admin");
-        }
-    }
 }

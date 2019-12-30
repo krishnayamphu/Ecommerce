@@ -122,8 +122,8 @@
                                     </div>
                                 </div>
 
-                                <div class="input-group mb-3 p-1">
-                                    <input type="file" class="form-control" name="file">
+                                <div class="input-group mb-3">
+                                    <input type="file" name="file">
                                 </div>
 
                                 <div class="row">

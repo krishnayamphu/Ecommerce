@@ -30,17 +30,18 @@ public class AdminDao {
     }
 
     //create admin user
-    public static int saveAdmin(String firstname, String lastname, String password, String email,String contact){
+    public static int saveAdmin(Admin admin) {
         int status=0;
         Connection cn=ConnectDB.connect();
-        String sql="INSERT INTO admin (firstname,lastname,password,email,contact) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO admin (firstname,lastname,password,email,contact,image) VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement ps=cn.prepareStatement(sql);
-            ps.setString(1,firstname);
-            ps.setString(2,lastname);
-            ps.setString(3,password);
-            ps.setString(4,email);
-            ps.setString(5,contact);
+            ps.setString(1, admin.getFirstname());
+            ps.setString(2, admin.getLastname());
+            ps.setString(3, admin.getPassword());
+            ps.setString(4, admin.getEmail());
+            ps.setString(5, admin.getContact());
+            ps.setString(6, admin.getImage());
             status=ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
