@@ -190,6 +190,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>Fullname</th>
                                 <th>Email</th>
+                                <th>Picture</th>
                                 <th>Created Date</th>
                                 <th>Action</th>
                             </tr>
@@ -200,6 +201,8 @@
                                     <td>${user.id}</td>
                                     <td>${user.firstname} ${user.lastname}</td>
                                     <td><c:out value="${user.email}"/></td>
+                                    <td><img src="http://localhost:8080/ecommerce/uploads/admin/${user.image}"
+                                             alt="${user.image}" width="100px" height="100px"></td>
                                     <td><c:out value="${user.createdAt}" /></td>
                                     <td>
                                         <div class="d-flex p-2">

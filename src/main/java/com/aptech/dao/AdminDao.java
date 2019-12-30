@@ -62,6 +62,7 @@ public class AdminDao {
                 String fname=rs.getString("firstname");
                 String lname=rs.getString("lastname");
                 String email=rs.getString("email");
+                String image = rs.getString("image");
                 String date=rs.getString("created_at");
 
                 Admin admin=new Admin();
@@ -69,6 +70,7 @@ public class AdminDao {
                 admin.setFirstname(fname);
                 admin.setLastname(lname);
                 admin.setEmail(email);
+                admin.setImage(image);
                 admin.setCreatedAt(date);
 
                 all_admins.add(admin);

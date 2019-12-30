@@ -30,6 +30,7 @@ public class RegisterAdminController extends HttpServlet {
         String password = null;
         String cpassword = null;
         String imageName = null;
+        boolean checkPassword = false;
 
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         if (isMultipart) {
@@ -77,66 +78,29 @@ public class RegisterAdminController extends HttpServlet {
                     }
                 }
 
-                pw.print(firstname + ", " + lastname + ", " + email + ", " + contact + ", " + password + "," + imageName);
-
+                if (password.equals(cpassword)) {
+                    //save admin user
+                    Admin admin = new Admin();
+                    admin.setFirstname(firstname);
+                    admin.setLastname(lastname);
+                    admin.setEmail(email);
+                    admin.setContact(contact);
+                    admin.setImage(imageName);
+                    admin.setPassword(password);
+                    int status = AdminDao.saveAdmin(admin);
+                } else {
+                    //password do not match
+                    pw.print("password do not match");
+                }
+//                pw.print(firstname + ", " + lastname + ", " + email + ", " + contact + ", " + password + ","+cpassword+"," + imageName);
             } catch (FileUploadException e) {
                 e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        response.sendRedirect("/ecommerce/admin");
     }
-
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String imageName = null;
-//
-////        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-////        if (isMultipart) {
-////            FileItemFactory factory = new DiskFileItemFactory();
-////            ServletFileUpload upload = new ServletFileUpload(factory);
-////            try {
-////                List items = upload.parseRequest(request);
-////                Iterator iterator = items.iterator();
-////                while (iterator.hasNext()) {
-////                    FileItem item = (FileItem) iterator.next();
-////                    if (!item.isFormField()) {
-////                        String fileName = item.getName();
-////                        String root = getServletContext().getRealPath("/");
-//////                        File path = new File(root + "/uploads");
-////                        File path = new File("C:\\Users\\Krishna Yamphu\\Desktop\\Ecommerce\\src\\main\\webapp\\uploads\\admin");
-////                        if (!path.exists()) {
-////                            boolean status = path.mkdirs();
-////                        }
-////                        File uploadedFile = new File(path + "/" + fileName);
-////                        imageName = fileName;
-////                        item.write(uploadedFile);
-////                        System.out.println(uploadedFile.getAbsolutePath());
-////                        System.out.println(fileName);
-////                    }
-////                }
-////            } catch (FileUploadException e) {
-////                e.printStackTrace();
-////            } catch (Exception e) {
-////                e.printStackTrace();
-////            }
-////        }
-//
-
-//
-////        Admin admin = new Admin();
-////        admin.setFirstname(firstname);
-////        admin.setLastname(lastname);
-////        admin.setEmail(email);
-////        admin.setContact(contact);
-////        admin.setImage(imageName);
-////        admin.setPassword(password);
-//        PrintWriter pw = response.getWriter();
-////
-//        pw.print(firstname);
-////                            int status=AdminDao.saveAdmin(admin);
-//        //            response.sendRedirect("/ecommerce/admin");
-//    }
-//
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("auth/register.jsp").forward(request, response);
