@@ -160,7 +160,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <%@include file="../sidebar.jsp" %>
+    <%@include file="sidebar.jsp" %>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

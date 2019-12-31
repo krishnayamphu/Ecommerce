@@ -25,11 +25,6 @@ public class AdminController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Admin> adminusers= AdminDao.getAllAdmins();
         request.setAttribute("alladmins",adminusers);
-//        PrintWriter pw =response.getWriter();
-//        for (Admin a:adminusers ) {
-//            pw.println(a.getEmail());
-//        }
-
         request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
     }
 }
