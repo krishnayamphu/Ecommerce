@@ -41,13 +41,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="http://localhost:8080/ecommerce/admin" class="nav-link">
+                            <a href="http://localhost:8080/ecommerce/products" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All Products</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="http://localhost:8080/ecommerce/admin/register" class="nav-link">
+                            <a href="http://localhost:8080/ecommerce/admin/create-prodcut" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create Product</p>
                             </a>

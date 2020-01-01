@@ -34,6 +34,14 @@
         <servlet-name>ProductTypeController</servlet-name>
         <servlet-class>com.aptech.controllers.admin.ProductTypeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateProductTypeController</servlet-name>
+        <servlet-class>com.aptech.controllers.admin.DeleteProductTypeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProductTypeController</servlet-name>
+        <servlet-class>com.aptech.controllers.admin.UpdateProductTypeController</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>DashboardController</servlet-name>
@@ -64,5 +72,13 @@
     <servlet-mapping>
         <servlet-name>ProductTypeController</servlet-name>
         <url-pattern>/admin/product-type</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateProductTypeController</servlet-name>
+        <url-pattern>/admin/delete-product-type</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductTypeController</servlet-name>
+        <url-pattern>/admin/product-type/edit</url-pattern>
     </servlet-mapping>
 </web-app>

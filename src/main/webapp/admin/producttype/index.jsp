@@ -44,15 +44,6 @@
                 <h5 class="float-left m-0 text-dark nav-link">Manage Product Type</h5>
             </li>
         </ul>
-
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="btn btn-sm btn-outline-success" href="http://localhost:8080/ecommerce/admin/new-product">
-                    New Product Type
-                </a>
-            </li>
-        </ul>
     </nav>
     <!-- /.navbar -->
 
@@ -68,7 +59,7 @@
 
                 <!-- start admin user -->
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-8 order-md-2">
                         <table class="table">
                             <thead>
                             <tr>
@@ -90,7 +81,7 @@
                                         <div class="d-flex p-2">
                                             <a class="btn btn-sm btn-success mr-3"
                                                href="admin/producttype/edit?id=${pt.id}">Edit</a>
-                                            <form action="admin/producttype" method="post">
+                                            <form action="delete-product-type" method="post">
                                                 <input type="hidden" value="${pt.id}" name="id">
                                                 <button class="btn btn-sm btn-danger" type="submit">Delete</button>
                                             </form>
@@ -100,6 +91,37 @@
                             </c:forEach>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-md-4 order-md-1">
+                        <div class="register-box pt-3">
+                            <div class="card">
+                                <div class="card-body register-card-body">
+                                    <form action="product-type" method="post">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="name"
+                                                   placeholder="Product Name"
+                                                   required>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <textarea class="form-control" name="description"
+                                                      placeholder="Description"></textarea>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <button type="submit" class="btn btn-primary btn-block">Create Product
+                                                    Type
+                                                </button>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.form-box -->
+                            </div><!-- /.card -->
+                        </div>
+                        <!-- /.register-box -->
                     </div>
                 </div>
                 <!-- end admin user -->

@@ -14,7 +14,15 @@ import java.util.ArrayList;
 
 public class ProductTypeController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String desc = request.getParameter("description");
 
+        ProductType productType = new ProductType();
+        productType.setName(name);
+        productType.setDescription(desc);
+        ProductTypeDao.saveProductType(productType);
+
+        response.sendRedirect("http://localhost:8080/ecommerce/admin/product-type");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
