@@ -31,6 +31,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item has-treeview menu-open">
+                    <a href="http://localhost:8080/ecommerce/admin/media" class="nav-link">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>
+                            Media
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cube"></i>
