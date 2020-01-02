@@ -1,6 +1,7 @@
 package com.aptech.controllers.media;
 
 import com.aptech.dao.AdminDao;
+import com.aptech.mediahelper.Media;
 import com.aptech.models.Admin;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -46,9 +48,12 @@ public class MediaController extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        response.sendRedirect("http://localhost:8080/ecommerce/admin/media");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<String> myFileList = Media.getMediaList();
+        request.setAttribute("myFileList", myFileList);
         request.getRequestDispatcher("media/index.jsp").forward(request, response);
     }
 }

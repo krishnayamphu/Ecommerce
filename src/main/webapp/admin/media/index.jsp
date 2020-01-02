@@ -87,6 +87,16 @@
                 </div>
                 <!-- / upload media form -->
 
+                <!-- show all media files -->
+                <div class="row">
+                    <div class="col">
+                        <!-- foreach(String s: myFileList)-->
+                        <c:forEach items="${myFileList}" var="f">
+                            <img src="http://localhost:8080/ecommerce/uploads/${f}" alt="" width="100px" height="100px">
+                        </c:forEach>
+                    </div>
+                </div>
+
 
             </div><!-- /.container-fluid -->
         </section>
