@@ -50,6 +50,10 @@
         <servlet-name>MediaController</servlet-name>
         <servlet-class>com.aptech.controllers.media.MediaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MediaDeleteController</servlet-name>
+        <servlet-class>com.aptech.controllers.media.MediaDeleteController</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>DashboardController</servlet-name>
@@ -96,5 +100,9 @@
     <servlet-mapping>
         <servlet-name>MediaController</servlet-name>
         <url-pattern>/admin/media</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MediaDeleteController</servlet-name>
+        <url-pattern>/admin/delete-media</url-pattern>
     </servlet-mapping>
 </web-app>

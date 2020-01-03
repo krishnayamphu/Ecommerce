@@ -91,8 +91,41 @@
                 <div class="row">
                     <div class="col">
                         <!-- foreach(String s: myFileList)-->
+                        <c:set var="count" value="0" scope="page"/>
                         <c:forEach items="${myFileList}" var="f">
-                            <img src="http://localhost:8080/ecommerce/uploads/${f}" alt="" width="100px" height="100px">
+                            <img data-toggle="modal" data-target="#modal-default${count}"
+                                 src="http://localhost:8080/ecommerce/uploads/${f}" alt="" width="100px" height="100px">
+                            <!-- start modal -->
+                            <div class="modal fade" id="modal-default${count}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Preview Image ${f}</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                <img class="img-fluid"
+                                                     src="http://localhost:8080/ecommerce/uploads/${f}" alt="">
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                                            </button>
+                                            <form action="delete-media" method="post">
+                                                <input type="hidden" name="imageName" value="${f}">
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                            <c:set var="count" value="${count + 1}" scope="page"/>
                         </c:forEach>
                     </div>
                 </div>

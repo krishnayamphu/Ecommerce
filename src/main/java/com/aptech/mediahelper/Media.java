@@ -20,10 +20,29 @@ public class Media {
         return allFiles;
     }
 
-    public static void main(String[] args) {
-        ArrayList<String> myfiles = getMediaList();
-        for (String f : myfiles) {
-            System.out.println(f);
+    public static boolean deleteMedia(String imageName) {
+        boolean status = false;
+        String path = "C:\\Users\\Krishna Yamphu\\Desktop\\Ecommerce\\src\\main\\webapp\\uploads";
+        String mPath = "C:\\Users\\Krishna Yamphu\\Desktop\\Ecommerce\\src\\main\\webapp\\uploads\\";
+
+        File file = new File(path);
+        if (file.exists()) {
+            String[] filename = file.list();
+            for (String name : filename) {
+                if (name.equals(imageName)) {
+                    File myFile = new File(mPath + name);
+                    myFile.delete();
+                    status = true;
+                    System.out.println(name + " is deleted");
+                }
+            }
+        } else {
+            System.out.println("no such a file");
         }
+        return status;
+    }
+
+    public static void main(String[] args) {
+//        deleteMedia("avatar2.png");
     }
 }
