@@ -1,3 +1,5 @@
+<%@ page import="java.io.File" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -94,7 +96,8 @@
                         <c:set var="count" value="0" scope="page"/>
                         <c:forEach items="${myFileList}" var="f">
                             <img data-toggle="modal" data-target="#modal-default${count}"
-                                 src="http://localhost:8080/ecommerce/uploads/${f}" alt="" width="100px" height="100px">
+                                 src="http://localhost:8080/ecommerce/uploads/${f.name}" alt="" width="100px"
+                                 height="100px">
                             <!-- start modal -->
                             <div class="modal fade" id="modal-default${count}">
                                 <div class="modal-dialog">
@@ -108,14 +111,15 @@
                                         <div class="modal-body">
                                             <p>
                                                 <img class="img-fluid"
-                                                     src="http://localhost:8080/ecommerce/uploads/${f}" alt="">
+                                                     src="http://localhost:8080/ecommerce/uploads/${f.name}" alt="">
                                             </p>
                                         </div>
                                         <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
                                             </button>
                                             <form action="delete-media" method="post">
-                                                <input type="hidden" name="imageName" value="${f}">
+                                                <input type="hidden" name="imageId" value="${f.id}">
+                                                <input type="hidden" name="imageName" value="${f.name}">
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                         </div>

@@ -1,22 +1,16 @@
 package com.aptech.extra;
 
+import com.aptech.dao.MediaDao;
+import com.aptech.models.Media;
+
 import java.io.File;
+import java.util.ArrayList;
 
 public class FileDemo {
     public static void main(String[] args) {
-        File file = new File("d:\\new");
-        if (file.exists()) {
-            String[] filename = file.list();
-            for (String name : filename) {
-//                System.out.println(name);
-                if (name.equals("a.png")) {
-                    File myFile = new File("d:\\new\\" + name);
-                    myFile.delete();
-                    System.out.println(name + " is deleted");
-                }
-            }
-        } else {
-            System.out.println("no such a file");
+        ArrayList<Media> all = MediaDao.getAllMediaTypes();
+        for (Media m : all) {
+            System.out.println(m.getName());
         }
     }
 }

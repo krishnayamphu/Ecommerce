@@ -3,7 +3,7 @@ package com.aptech.mediahelper;
 import java.io.File;
 import java.util.ArrayList;
 
-public class Media {
+public class MediaHelper {
     public static ArrayList<String> getMediaList() {
         ArrayList<String> allFiles = new ArrayList<>();
         File file = new File("C:\\Users\\Krishna Yamphu\\Desktop\\Ecommerce\\src\\main\\webapp\\uploads");

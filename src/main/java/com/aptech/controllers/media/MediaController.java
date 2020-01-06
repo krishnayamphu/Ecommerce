@@ -1,8 +1,9 @@
 package com.aptech.controllers.media;
 
 import com.aptech.dao.AdminDao;
-import com.aptech.mediahelper.Media;
+import com.aptech.dao.MediaDao;
 import com.aptech.models.Admin;
+import com.aptech.models.Media;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
@@ -38,6 +39,13 @@ public class MediaController extends HttpServlet {
                         }
                         File uploadedFile = new File(path + "/" + fileName);
                         item.write(uploadedFile);
+
+                        Media media = new Media();
+                        media.setName(fileName);
+                        media.setPath("http://localhost:8080/ecommerce/uploads/");
+                        MediaDao.saveMedia(media);
+
+
                         System.out.println(uploadedFile.getAbsolutePath());
                         System.out.println(fileName);
                     }
@@ -52,7 +60,7 @@ public class MediaController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<String> myFileList = Media.getMediaList();
+        ArrayList<Media> myFileList = MediaDao.getAllMediaTypes();
         request.setAttribute("myFileList", myFileList);
         request.getRequestDispatcher("media/index.jsp").forward(request, response);
     }
