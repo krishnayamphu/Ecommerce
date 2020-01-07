@@ -59,6 +59,10 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>com.aptech.controllers.HomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SingleProductController</servlet-name>
+        <servlet-class>com.aptech.controllers.SingleProductController</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>DashboardController</servlet-name>
@@ -113,5 +117,9 @@
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SingleProductController</servlet-name>
+        <url-pattern>/product</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -98,7 +98,8 @@
                         <p class="card-text">Rs. ${p.mrpPrice}</p>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-sm btn-primary" href="">View Details</a>
+                        <a class="btn btn-sm btn-primary" href="http://localhost:8080/ecommerce/product?pid=${p.id}">View
+                            Details</a>
                     </div>
                 </div>
             </c:forEach>

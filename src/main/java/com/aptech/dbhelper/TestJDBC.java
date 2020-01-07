@@ -13,21 +13,21 @@ import java.util.ArrayList;
 
 public class TestJDBC {
     public static void main(String[] args) {
-//        MessageDigest digest = null;
-//        try {
-//            digest = MessageDigest.getInstance("SHA-256");
-//            byte[] hash = digest.digest("12345".getBytes(StandardCharsets.UTF_8));
-//
-//            String hex = DatatypeConverter.printHexBinary(hash);
-//            System.out.println(hex);
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//        }
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest("12345".getBytes(StandardCharsets.UTF_8));
 
-        ArrayList<Product> latestProduct = ProductDao.getLatestProducts();
-        for (Product p : latestProduct) {
-            System.out.println(p.getId() + ", " + p.getName());
+            String hex = DatatypeConverter.printHexBinary(hash);
+            System.out.println(hex);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
+
+//        ArrayList<Product> latestProduct = ProductDao.getLatestProducts();
+//        for (Product p : latestProduct) {
+//            System.out.println(p.getId() + ", " + p.getName());
+//        }
 
     }
 }
