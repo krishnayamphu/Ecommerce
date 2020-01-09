@@ -1,6 +1,7 @@
 package com.aptech.controllers.admin;
 
 import com.aptech.dao.ProductTypeDao;
+import com.aptech.mediahelper.MediaHelper;
 import com.aptech.models.ProductType;
 
 import javax.servlet.ServletException;
@@ -17,7 +18,10 @@ public class CreateProductController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<ProductType> allProductTypes = ProductTypeDao.getAllProductTypes();
+        ArrayList<String> allMedia = MediaHelper.getMediaList();
+
         request.setAttribute("allProductTypes", allProductTypes);
+        request.setAttribute("allMedia", allMedia);
         request.getRequestDispatcher("products/create.jsp").forward(request, response);
     }
 }

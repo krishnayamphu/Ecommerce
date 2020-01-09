@@ -66,7 +66,7 @@
                 <div class="register-box">
                     <div class="card">
                         <div class="card-body register-card-body">
-                            <form action="register" method="post" enctype="multipart/form-data">
+                            <form name="myForm" action="register" method="post" enctype="multipart/form-data">
 
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" name="name" placeholder="Product Name">
@@ -118,8 +118,41 @@
                                 </div>
 
                                 <div class="input-group mb-3">
-                                    <button class="btn btn-sm btn-info">Choose Image</button>
+                                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal"
+                                            data-target="#modal-default">Choose Image
+                                    </button>
+                                    <input class="form-control" type="text" name="imageName" id="imageName">
                                 </div>
+
+                                <!-- start media modal -->
+                                <div class="modal fade" id="modal-default">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">All Media</h4>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <c:forEach items="${allMedia}" var="media">
+                                                        <div class="col-sm-2">
+                                                            <img class="img-thumbnail"
+                                                                 src="http://localhost:8080/ecommerce/uploads/${media}"
+                                                                 alt="${media}" onclick="selectImage('${media}')"
+                                                                 data-dismiss="modal">
+                                                        </div>
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- end medial modal -->
 
 
                                 <div class="row">
@@ -192,5 +225,10 @@
 <script src="http://localhost:8080/ecommerce/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="http://localhost:8080/ecommerce/dist/js/demo.js"></script>
+<script>
+    function selectImage(imageName) {
+        document.forms['myForm'].imageName.value = imageName;
+    }
+</script>
 </body>
 </html>

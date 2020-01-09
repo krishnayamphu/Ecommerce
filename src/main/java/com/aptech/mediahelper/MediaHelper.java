@@ -44,5 +44,9 @@ public class MediaHelper {
 
     public static void main(String[] args) {
 //        deleteMedia("avatar2.png");
+        ArrayList<String> all = getMediaList();
+        for (String s : all) {
+            System.out.println(s);
+        }
     }
 }

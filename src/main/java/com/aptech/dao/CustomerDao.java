@@ -11,6 +11,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerDao {
+    //customer login
+    public static int login(String email, String password) {
+        int count = 0;
+        Connection cn = ConnectDB.connect();
+        String sql = "SELECT * FROM customer WHERE email=? AND password=?";
+        try {
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                count++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
 
     //get all customer users
     public static ArrayList<Customer> getAllCusotmers() {
