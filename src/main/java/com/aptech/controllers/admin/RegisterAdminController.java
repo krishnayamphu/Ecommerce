@@ -45,7 +45,7 @@ public class RegisterAdminController extends HttpServlet {
                         String fileName = item.getName();
                         String root = getServletContext().getRealPath("/");
 //                        File path = new File(root + "/uploads");
-                        File path = new File("C:\\Users\\Krishna Yamphu\\Desktop\\Ecommerce\\src\\main\\webapp\\uploads\\admin");
+                        File path = new File("E:\\Server\\tomcat 9.0\\webapps\\ecommerce\\uploads\\admin");
                         if (!path.exists()) {
                             boolean status = path.mkdirs();
                         }

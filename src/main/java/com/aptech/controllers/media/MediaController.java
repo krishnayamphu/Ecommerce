@@ -1,9 +1,6 @@
 package com.aptech.controllers.media;
 
-import com.aptech.dao.AdminDao;
-import com.aptech.dao.MediaDao;
-import com.aptech.models.Admin;
-import com.aptech.models.Media;
+import com.aptech.mediahelper.MediaHelper;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
@@ -33,21 +30,13 @@ public class MediaController extends HttpServlet {
                     FileItem item = (FileItem) iterator.next();
                     if (!item.isFormField()) {
                         String fileName = item.getName();
-                        File path = new File("C:\\Users\\Krishna Yamphu\\Desktop\\Ecommerce\\src\\main\\webapp\\uploads");
+                        File path = new File("E:\\Server\\tomcat 9.0\\webapps\\ecommerce\\uploads");
                         if (!path.exists()) {
                             boolean status = path.mkdirs();
                         }
                         File uploadedFile = new File(path + "/" + fileName);
                         item.write(uploadedFile);
-
-                        Media media = new Media();
-                        media.setName(fileName);
-                        media.setPath("http://localhost:8080/ecommerce/uploads/");
-                        MediaDao.saveMedia(media);
-
-
                         System.out.println(uploadedFile.getAbsolutePath());
-                        System.out.println(fileName);
                     }
                 }
             } catch (FileUploadException e) {
@@ -56,11 +45,11 @@ public class MediaController extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        response.sendRedirect("http://localhost:8080/ecommerce/admin/media");
+        response.sendRedirect("media");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Media> myFileList = MediaDao.getAllMediaTypes();
+        ArrayList<String> myFileList = MediaHelper.getMediaList();
         request.setAttribute("myFileList", myFileList);
         request.getRequestDispatcher("media/index.jsp").forward(request, response);
     }

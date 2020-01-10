@@ -1,6 +1,7 @@
 package com.aptech.dao;
 
 import com.aptech.dbhelper.ConnectDB;
+import com.aptech.models.Admin;
 import com.aptech.models.Product;
 import com.aptech.models.ProductType;
 
@@ -96,6 +97,30 @@ public class ProductDao {
             e.printStackTrace();
         }
         return singleProduct;
+    }
+
+    //create product item
+    public static int saveProduct(Product product) {
+        int status = 0;
+        Connection cn = ConnectDB.connect();
+        String sql = "INSERT INTO product (product_type_id,name,mrp_price,actual_price,color,size,image,hide,short_description,long_description) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setInt(1, product.getProductTypeId());
+            ps.setString(2, product.getName());
+            ps.setString(3, product.getMrpPrice());
+            ps.setString(4, product.getActualPrice());
+            ps.setString(5, product.getColor());
+            ps.setString(6, product.getSize());
+            ps.setString(7, product.getImage());
+            ps.setInt(8, product.getHide());
+            ps.setString(9, product.getShortDescription());
+            ps.setString(10, product.getLongDescription());
+            status = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
     }
 
 }

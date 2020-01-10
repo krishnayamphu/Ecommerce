@@ -63,106 +63,123 @@
         <section class="content pt-3">
             <div class="container-fluid">
 
-                <div class="register-box">
+                <div class="">
                     <div class="card">
                         <div class="card-body register-card-body">
-                            <form name="myForm" action="register" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <form name="myForm" action="create-product" method="post">
 
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="name" placeholder="Product Name">
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="mrp-price" placeholder="MRP">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="actual_price"
-                                               placeholder="Actual Price">
-                                    </div>
-                                </div>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="name"
+                                                   placeholder="Product Name">
+                                        </div>
 
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="color" placeholder="Color">
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="size" placeholder="Size">
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <textarea class="form-control" name="short_desc"
-                                              placeholder="Short Description"></textarea>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <textarea class="form-control" name="long_desc"
-                                              placeholder="Long Description"></textarea>
-                                </div>
-
-
-                                <div class="input-group mb-3">
-                                    <label>Product Visibility</label>
-                                    <select name="hide">
-                                        <option value="0">Hide</option>
-                                        <option value="1">Show</option>
-                                    </select>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <label>Product Type</label>
-                                    <select name="hide">
-                                        <c:forEach items="${allProductTypes}" var="pt">
-                                            <option value="${pt.id}">${pt.name}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal"
-                                            data-target="#modal-default">Choose Image
-                                    </button>
-                                    <input class="form-control" type="text" name="imageName" id="imageName">
-                                </div>
-
-                                <!-- start media modal -->
-                                <div class="modal fade" id="modal-default">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">All Media</h4>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" name="mrp_price"
+                                                       placeholder="MRP">
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <c:forEach items="${allMedia}" var="media">
-                                                        <div class="col-sm-2">
-                                                            <img class="img-thumbnail"
-                                                                 src="http://localhost:8080/ecommerce/uploads/${media}"
-                                                                 alt="${media}" onclick="selectImage('${media}')"
-                                                                 data-dismiss="modal">
-                                                        </div>
-                                                    </c:forEach>
-                                                </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" name="actual_price"
+                                                       placeholder="Actual Price">
                                             </div>
                                         </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
-                                <!-- end medial modal -->
 
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="color" placeholder="Color">
+                                        </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <button type="submit" class="btn btn-primary btn-block">Create Product
-                                        </button>
-                                    </div>
-                                    <!-- /.col -->
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="size" placeholder="Size">
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                    <textarea class="form-control" name="short_desc"
+                                              placeholder="Short Description"></textarea>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                    <textarea class="form-control" name="long_desc"
+                                              placeholder="Long Description"></textarea>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="input-group mb-3">
+                                                    <label>Product Visibility</label>
+                                                    <select class="form-control" name="hide">
+                                                        <option value="0">Show</option>
+                                                        <option value="1">Hide</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="input-group mb-3">
+                                                    <label>Product Type</label>
+                                                    <select class="form-control" name="product_type_id">
+                                                        <c:forEach items="${allProductTypes}" var="pt">
+                                                            <option value="${pt.id}">${pt.name}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <button type="button" class="btn btn-sm btn-info" data-toggle="modal"
+                                                    data-target="#modal-default">Choose Image
+                                            </button>
+                                            <input class="form-control" type="hidden" name="imageName" id="imageName">
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <img height="150px" id="thumbImage" src="" alt="">
+                                        </div>
+
+                                        <!-- start media modal -->
+                                        <div class="modal fade" id="modal-default">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">All Media</h4>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <c:forEach items="${allMedia}" var="media">
+                                                                <div class="col-sm-2">
+                                                                    <img class="img-thumbnail"
+                                                                         src="http://localhost:8080/ecommerce/uploads/${media}"
+                                                                         alt="${media}"
+                                                                         onclick="selectImage('${media}')"
+                                                                         data-dismiss="modal">
+                                                                </div>
+                                                            </c:forEach>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                        <!-- end medial modal -->
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <button type="submit" class="btn btn-primary">Create Product
+                                                </button>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                         <!-- /.form-box -->
                     </div><!-- /.card -->
@@ -228,6 +245,7 @@
 <script>
     function selectImage(imageName) {
         document.forms['myForm'].imageName.value = imageName;
+        document.getElementById("thumbImage").src = "http://localhost:8080/ecommerce/uploads/" + imageName;
     }
 </script>
 </body>

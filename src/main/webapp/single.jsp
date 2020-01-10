@@ -93,7 +93,7 @@
             <!-- Default box -->
             <div class="card card-solid">
                 <div class="card-body">
-                    <form action="shop" method="post">
+                    <form action="shopping-cart" method="post">
                         <C:forEach items="${singleProduct}" var="product">
                             <input type="hidden" name="cid" value="1">
                             <input type="hidden" name="pid" value="${product.id}">

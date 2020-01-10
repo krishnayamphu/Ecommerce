@@ -1,12 +1,10 @@
-<%@ page import="java.io.File" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Media</title>
+    <title>AdminLTE 3 | Products</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -43,15 +41,15 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <h5 class="float-left m-0 text-dark nav-link">Manage Media</h5>
+                <h5 class="float-left m-0 text-dark nav-link">Manage Products</h5>
             </li>
         </ul>
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="btn btn-sm btn-outline-success sr-only" href="http://localhost:8080/ecommerce/admin/register">
-                    New Admin User
+                <a class="btn btn-sm btn-outline-success" href="http://localhost:8080/ecommerce/admin/register">
+                    Create New Product
                 </a>
             </li>
         </ul>
@@ -67,73 +65,48 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <!-- upload media form -->
-                <div class="row">
-                    <div class="col-md-4">
-                        <form action="media" method="post" enctype="multipart/form-data">
-                            <div class="card-body">
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="" name="file" id="exampleInputFile1">
-                                        <label class="custom-file-label sr-only" for="exampleInputFile1">Choose
-                                            file</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">Upload</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
-                        </form>
-                    </div>
-                </div>
-                <!-- / upload media form -->
 
-                <!-- show all media files -->
-                <hr>
+                <!-- start admin user -->
                 <div class="row">
                     <div class="col">
-                        <!-- foreach(String s: myFileList)-->
-                        <c:set var="count" value="0" scope="page"/>
-                        <c:forEach items="${myFileList}" var="media">
-                            <img class="img-thumbnail" data-toggle="modal" data-target="#modal-default${count}"
-                                 src="http://localhost:8080/ecommerce/uploads/${media}" alt="" width="100px"
-                                 height="100px">
-                            <!-- start modal -->
-                            <div class="modal fade" id="modal-default${count}">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Preview Image </h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>
-                                                <img class="img-fluid"
-                                                     src="http://localhost:8080/ecommerce/uploads/${media}" alt="">
-                                            </p>
-                                        </div>
-                                        <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
-                                            </button>
-                                            <form action="delete-media" method="post">
-                                                <input type="hidden" name="imageName" value="${media}">
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal -->
-                            <c:set var="count" value="${count + 1}" scope="page"/>
-                        </c:forEach>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Name</th>
+                                <th>MRP Price</th>
+                                <th>Actual Price</th>
+                                <th>Picture</th>
+                                <th>Created Date</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%--                            <c:forEach items="${alladmins}" var="user">--%>
+                            <%--                                <tr>--%>
+                            <%--                                    <td>${user.id}</td>--%>
+                            <%--                                    <td>${user.firstname} ${user.lastname}</td>--%>
+                            <%--                                    <td>${user.email}</td>--%>
+                            <%--                                    <td><img src="http://localhost:8080/ecommerce/uploads/admin/${user.image}"--%>
+                            <%--                                             alt="${user.image}" width="50px" height="50px"></td>--%>
+                            <%--                                    <td>${user.createdAt}</td>--%>
+                            <%--                                    <td>--%>
+                            <%--                                        <div class="d-flex p-2">--%>
+                            <%--                                            <a class="btn btn-sm btn-success mr-3"--%>
+                            <%--                                               href="admin/edit?id=${user.id}">Edit</a>--%>
+                            <%--                                            <form action="admin" method="post">--%>
+                            <%--                                                <input type="hidden" value="${user.id}" name="id">--%>
+                            <%--                                                <button class="btn btn-sm btn-danger" type="submit">Delete</button>--%>
+                            <%--                                            </form>--%>
+                            <%--                                        </div>--%>
+                            <%--                                    </td>--%>
+                            <%--                                </tr>--%>
+                            <%--                            </c:forEach>--%>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
+                <!-- end admin user -->
 
             </div><!-- /.container-fluid -->
         </section>
