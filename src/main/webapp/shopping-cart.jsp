@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Ecommerce | Shopping Cart</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -35,86 +35,50 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 
-<header class="bg-primary">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Ecommerce</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            About Us
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">FAQ</a>
-                    </li>
-                </ul>
-
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-user"></i> Sign in</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
+<%@include file="header.jsp" %>
 
 <!-- start main -->
 <main class="my-5 py-5">
     <div class="container">
         <!-- Main content -->
         <section class="content">
-
-            <table>
+            <h3>All Selected Porducts</h3>
+            <form action="/ecommerce/order">
+                <table class="table table-bordered">
                 <tr>
-                    <th>#</th>
+                    <th>Code</th>
                     <th>Product Details</th>
-                    <th>Quantity</th>
                     <th>Price</th>
+                    <th width="170px">Quantity</th>
                     <th>Action</th>
                 </tr>
-                <c:forEach items="${singleProduct}" var="p">
-                    ${p.name}
-                </c:forEach>
-
                 <c:forEach items="${all_cart_items}" var="cart">
                     <tr>
-                        <td>${cart.id}</td>
+                        <td>${cart.pid}</td>
+                        <td> ${cart.name} </td>
+                        <td>${cart.price}</td>
                         <td>
+                            <input type="number" value="${cart.quantity}" name="qty">
                         </td>
-                        <td>${cart.quantity}</td>
-                        <td>1200</td>
                         <td>
-                            <button>Delete</button>
+                            <div class="d-flex p-2">
+                                <form action="update-shopping-cart" method="post">
+                                    <input type="hidden" name="pid" value="${cart.pid}">
+                                    <button class="mr-3">Update</button>
+                                </form>
+                                <form action="delete-shopping-cart" method="post">
+                                    <input type="hidden" name="pid" value="${cart.pid}">
+                                    <button>Delete</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
+
+                <button class="btn btn-primary" type="submit">Order</button>
+            </form>
+
 
         </section>
         <!-- /.content -->

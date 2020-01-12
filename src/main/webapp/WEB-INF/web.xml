@@ -75,6 +75,10 @@
         <servlet-name>ProductController</servlet-name>
         <servlet-class>com.aptech.controllers.admin.ProductController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShoppingCartDeleteController</servlet-name>
+        <servlet-class>com.aptech.controllers.ShoppingCartDeleteController</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>DashboardController</servlet-name>
@@ -147,6 +151,10 @@
     <servlet-mapping>
         <servlet-name>CustomerLoginController</servlet-name>
         <url-pattern>/client/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShoppingCartDeleteController</servlet-name>
+        <url-pattern>/delete-shopping-cart</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

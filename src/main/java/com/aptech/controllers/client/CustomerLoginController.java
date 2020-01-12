@@ -13,14 +13,14 @@ import java.io.PrintWriter;
 
 public class CustomerLoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("email");//admin@gmail.com
+        String email = request.getParameter("email");//user@gmail.com
         String password = request.getParameter("password");
         int status = CustomerDao.login(email, password);
         PrintWriter pw = response.getWriter();
         if (status == 1) {
             HttpSession session = request.getSession();
             session.setAttribute("email", email);
-            response.sendRedirect("dashboard");
+            response.sendRedirect("http://localhost:8080/ecommerce/shopping-cart?cid=1");
         } else {
             String msg = "Invalid username or password";
             request.setAttribute("err", msg);

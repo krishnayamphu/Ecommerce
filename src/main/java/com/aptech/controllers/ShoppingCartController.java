@@ -2,6 +2,7 @@ package com.aptech.controllers;
 
 import com.aptech.dao.ProductDao;
 import com.aptech.dao.ShoppingCartDao;
+import com.aptech.models.CartItem;
 import com.aptech.models.Product;
 import com.aptech.models.ShoppingCart;
 
@@ -27,17 +28,17 @@ public class ShoppingCartController extends HttpServlet {
 
         ShoppingCartDao.saveShoppingCartItem(cart);
         System.out.println("added to cart");
-        response.sendRedirect("shopping-cart?cid=" + cid + "&&pid=" + pid);
+        response.sendRedirect("shopping-cart?cid=" + cid);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int cid = Integer.parseInt(request.getParameter("cid"));
-        int pid = Integer.parseInt(request.getParameter("pid"));
-        ArrayList<ShoppingCart> all_cart_items = ShoppingCartDao.getAllShoppingCartItmes(cid);
-        ArrayList<Product> singleProduct = ProductDao.getSingleProduct(pid);
+//        int pid = Integer.parseInt(request.getParameter("pid"));
+        ArrayList<CartItem> all_cart_items = ShoppingCartDao.getAllShoppingCartItmes(cid);
+//        ArrayList<Product> singleProduct = ProductDao.getSingleProduct(pid);
 
         request.setAttribute("all_cart_items", all_cart_items);
-        request.setAttribute("singleProduct", singleProduct);
+//        request.setAttribute("singleProduct", singleProduct);
 
         request.getRequestDispatcher("shopping-cart.jsp").forward(request, response);
     }
