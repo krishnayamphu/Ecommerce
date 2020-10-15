@@ -8,76 +8,76 @@
   <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>DashboardController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.DashboardController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.DashboardController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdminLoginController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.AdminLoginController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.AdminLoginController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegisterAdminController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.RegisterAdminController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.RegisterAdminController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdminController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.AdminController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.AdminController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdminEditController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.AdminEditController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.AdminEditController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CutomerManageController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.CutomerManageController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.CutomerManageController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProductTypeController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.ProductTypeController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.ProductTypeController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateProductTypeController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.DeleteProductTypeController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.DeleteProductTypeController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateProductTypeController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.UpdateProductTypeController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.UpdateProductTypeController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateProductController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.CreateProductController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.CreateProductController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MediaController</servlet-name>
-        <servlet-class>com.aptech.controllers.media.MediaController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.media.MediaController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MediaDeleteController</servlet-name>
-        <servlet-class>com.aptech.controllers.media.MediaDeleteController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.media.MediaDeleteController</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>HomeController</servlet-name>
-        <servlet-class>com.aptech.controllers.HomeController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.HomeController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SingleProductController</servlet-name>
-        <servlet-class>com.aptech.controllers.SingleProductController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.SingleProductController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShoppingCartController</servlet-name>
-        <servlet-class>com.aptech.controllers.ShoppingCartController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.ShoppingCartController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CustomerLoginController</servlet-name>
-        <servlet-class>com.aptech.controllers.client.CustomerLoginController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.client.CustomerLoginController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProductController</servlet-name>
-        <servlet-class>com.aptech.controllers.admin.ProductController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.admin.ProductController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShoppingCartDeleteController</servlet-name>
-        <servlet-class>com.aptech.controllers.ShoppingCartDeleteController</servlet-class>
+        <servlet-class>com.mangsuktech.controllers.ShoppingCartDeleteController</servlet-class>
     </servlet>
 
     <servlet-mapping>

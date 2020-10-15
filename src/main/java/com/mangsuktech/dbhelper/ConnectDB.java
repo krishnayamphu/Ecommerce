@@ -10,7 +10,7 @@ public class ConnectDB {
     public static Connection connect(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String url="jdbc:mysql://localhost:3306/db_ecommerce";
+            String url="jdbc:mysql://localhost/db_ecommerce?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             String user="root";
             String password="";
             Connection con = DriverManager.getConnection(url, user, password);

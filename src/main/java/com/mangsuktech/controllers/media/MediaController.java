@@ -30,7 +30,7 @@ public class MediaController extends HttpServlet {
                     FileItem item = (FileItem) iterator.next();
                     if (!item.isFormField()) {
                         String fileName = item.getName();
-                        File path = new File("E:\\Server\\tomcat 9.0\\webapps\\ecommerce\\uploads");
+                        File path = new File("uploads");
                         if (!path.exists()) {
                             boolean status = path.mkdirs();
                         }

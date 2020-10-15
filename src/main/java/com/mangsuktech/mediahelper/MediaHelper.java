@@ -7,7 +7,7 @@ public class MediaHelper {
     //all media files
     public static ArrayList<String> getMediaList() {
         ArrayList<String> allFiles = new ArrayList<>();
-        File file = new File("E:\\Server\\tomcat 9.0\\webapps\\ecommerce\\uploads");
+        File file = new File("uploads");
         if (file.exists()) {
             File[] listOfFiles = file.listFiles();
             for (File myFile : listOfFiles) {
@@ -23,7 +23,7 @@ public class MediaHelper {
     //delete media file
     public static boolean deleteMedia(String imageName) {
         boolean status = false;
-        String path = "E:\\Server\\tomcat 9.0\\webapps\\ecommerce\\uploads";
+        String path = "uploads";
         File file = new File(path);
         if (file.exists()) {
             String[] filename = file.list();
